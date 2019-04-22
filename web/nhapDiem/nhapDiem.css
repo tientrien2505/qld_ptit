@@ -1,0 +1,27 @@
+#monHoc, #lopHoc, #msv{
+    width: 300px;
+}
+#options td{
+    border: none;
+    padding: 5px;
+}
+#options{
+    text-align: left;
+}
+.hoTen{
+    padding-left: 5px;
+    width: 35%;
+    text-align: left;
+}
+.maSinhVien{
+    width: 15%;
+}
+.diem{
+    width: 10%;
+}
+.diem input{
+    text-align: right;
+}
+#danhSachSinhVien input{
+    border: none;
+}

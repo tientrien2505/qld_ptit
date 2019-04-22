@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+ 
+<ul id="LoadListCate">
+    <li class="shownews">
+        <a index="0" attr="href">></a>
+        <img index="0" attr="src"></img>
+        <a index="1"></a>
+        <span index="3"></span>
+    </li>
+</ul>

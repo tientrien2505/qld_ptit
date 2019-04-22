@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 26, 2018, 2:25:15 PM
+    Author     : TruongDao
+*/
+
+h3, h1, h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+h3{
+    font-size: 1.5em;
+}
+h2{
+    font-size: 2em;
+}
+h1{
+    font-size: 2.5em;
+    color: #054f56;
+}
+p{
+    padding: 10px 0;
+    line-height: 30px;
+    font-size: 1.25em;
+}
+.link-content-footer a{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+.link-content-footer{
+    margin-top: 30px;
+}
+.link-content-footer a:hover{
+    color: #054f56;
+}
