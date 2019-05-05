@@ -3,28 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package qld.model;
+package test.qld.model;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -33,6 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import qld.model.TaiKhoan;
 import support.Excel;
 
 /**
@@ -40,14 +23,14 @@ import support.Excel;
  * @author TruongDao
  */
 @RunWith(Parameterized.class)
-public class TaiKhoanIT {
-
+public class TestTaiKhoan {
+    private static final int SHEET = 0;
     private int id;
     private String user;
     private String pass;
     private boolean expectedResult;
 
-    public TaiKhoanIT(int id, String user, String pass, boolean expectedResult) {
+    public TestTaiKhoan(int id, String user, String pass, boolean expectedResult) {
         this.id = id;
         this.user = user;
         this.pass = pass;
@@ -62,7 +45,7 @@ public class TaiKhoanIT {
         prototype.add(new Integer(Excel.STRING));
         prototype.add(new Integer(Excel.STRING));
         prototype.add(new Integer(Excel.BOOLEAN));
-        list = new Excel(0, 4, prototype).getListObject();
+        list = new Excel(SHEET, 4, prototype).getListObject();
         return list;
     }
 

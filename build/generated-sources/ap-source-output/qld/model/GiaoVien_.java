@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import qld.model.LopHocPhan;
 import qld.model.TaiKhoan;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-21T23:19:27")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-05-05T12:37:07")
 @StaticMetamodel(GiaoVien.class)
 public class GiaoVien_ { 
 

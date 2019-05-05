@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,8 +25,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author TruongDao
  */
 public class Excel {
+
     // define path file
-    private final File file = new File(".\\testcases\\taiKhoanTestCase.xlsx");
+    private final File file = new File(".\\testcases\\TestCase.xlsx");
     // define type of data
     public static final int INT = 1;
     public static final int STRING = 2;
@@ -40,8 +42,7 @@ public class Excel {
         this.colNum = colNum;
         this.prototype = prototype;
     }
-    
-    public ArrayList<Object> getListObject() throws FileNotFoundException, IOException{
+public ArrayList<Object> getListObject() throws FileNotFoundException, IOException{
         ArrayList<Object> listObject = new ArrayList<>();
         FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
@@ -56,17 +57,17 @@ public class Excel {
                 for (int i = 0; i < this.colNum; i++){
                     Cell cell = cellInterator.next();
                     switch(this.prototype.get(i).intValue()){
-                        case Excel.INT:
+                        case excel.Excel.INT:
                             object[i] = new BigDecimal(cell.getNumericCellValue()).intValue();
                             break;
-                        case Excel.STRING:
+                        case excel.Excel.STRING:
                             String data = new DataFormatter().formatCellValue(cell);
                             object[i] = data;
                             break;
-                        case Excel.BOOLEAN:
+                        case excel.Excel.BOOLEAN:
                             object[i] = cell.getBooleanCellValue();
                             break;
-                        case Excel.FLOAT:
+                        case excel.Excel.FLOAT:
                             object[i] = new BigDecimal(cell.getNumericCellValue()).floatValue();
                             break;
                         default:
@@ -77,4 +78,5 @@ public class Excel {
             }
         return listObject;
     }
+    
 }

@@ -1,5 +1,6 @@
 $(document).ready(function () {
 //    window.onload = function () {
+    var page = 'home';
     $("#loading").hide();
     var sign = document.createElement("div");
     var body = document.getElementsByTagName("body")[0];
@@ -16,6 +17,31 @@ $(document).ready(function () {
 
     $("#dangNhap").on('click',function(){
         $("#loading").show();
+        var user = $("#username").val();
+        console.log(user);
+        var pass = $("#password").val();
+        console.log(pass);
+        $.ajax({
+            type: 'POST',
+            url: 'Login',
+            data: {
+                user: user,
+                pass: pass
+            },
+            success: function(result){
+                console.log(result);
+                var jsonObject = JSON.parse(result);
+                var rs = jsonObject.result;
+                if (rs === 'ok'){
+                    console.log('ok');
+                    window.location.href = page;
+                }
+                else{
+                    $(".error").html("Sai tài khoản hoặc mật khẩu!");
+                    $("#loading").hide();
+                }
+            }
+        });
     });
     
     $('#signout').on('click', function () {
@@ -55,6 +81,7 @@ $(document).ready(function () {
     var nhapDiem = $("#nhapDiem");
     if (nhapDiem) {
         nhapDiem.on("click", function (e) {
+            page = 'NhapDiem';
             $("#sign").css({"z-index": "100", "display": "block"});
             $("#sign").animate({
                 "opacity": "1"
@@ -75,6 +102,7 @@ $(document).ready(function () {
     }
     if (profile) {
         profile.on("click", function (e) {
+            page = 'home';
             $("#sign").css({"z-index": "100", "display": "block"});
             $("#sign").animate({
                 "opacity": "1"

@@ -83,7 +83,7 @@ public class MonHocServlet extends HttpServlet {
         ArrayList<MonHoc> listMH = new ArrayList<>();
         for (LopHocPhan lhp : listLHP) {
             MonHoc monHoc = new MonHocDao("QLD_PTIT", "sa", "1").getMonHoc(lhp);
-            if (!listMH.contains(monHoc)) {
+            if (!chua(monHoc,listMH)) {
                 listMH.add(monHoc);
             }
         }
@@ -106,6 +106,14 @@ public class MonHocServlet extends HttpServlet {
         } catch (IOException ex) {
             Logger.getLogger(KhoaHocServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public boolean chua(MonHoc monHoc, ArrayList<MonHoc> listMH){
+        for (MonHoc mh:listMH){
+            if (monHoc.getId() == mh.getId())
+                return true;
+        }
+        return false;
     }
 
     /**

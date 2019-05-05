@@ -65,6 +65,18 @@ public class SinhVienLHPDao {
         }
         return listSV;
     }
+    
+    public void themSinhVienLHP(SinhVien sv, LopHocPhan lhp) {
+        try {
+            String query = "INSERT INTO dbo.SinhVienLHP (LopHocPhanID,SinhVienMaSV) Values(?,?)";
+            this.pstm = this.conn.prepareStatement(query);
+            this.pstm.setString(2, sv.getMaSV());
+            this.pstm.setInt(1, lhp.getId());
+            this.pstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SinhVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public Connection getConn() {
         return conn;

@@ -57,10 +57,10 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("pass", pass);
             GiaoVien gv = new GiaoVienDao("QLD_PTIT", "sa", "1").getGiaoVien(taiKhoan);
             session.setAttribute("name", gv.getHoTen());
-            response.sendRedirect("home");
             session.setAttribute("id", gv.getMaGV());
+            response.getWriter().write("{\"result\":\"ok\"}");
         } else{
-            response.sendRedirect("home");
+            response.getWriter().write("{\"result\":\"not ok\"}");
         }
         
         

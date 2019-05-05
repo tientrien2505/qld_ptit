@@ -92,6 +92,7 @@ public class DiemMonHocDao {
                 } 
                 // con khac nhau thi cap nhat thanh cong
                 else {
+                    System.out.println(dmhSau.getDiemCK());
                     return true;
                 }
             } 
@@ -122,6 +123,7 @@ public class DiemMonHocDao {
             pstm.executeUpdate();
             // kiem tra diem co duoc them vao csdl chua
             DiemMonHoc dmh = getDiemMonHoc(diemMonHoc.getSinhVienMaSV(), diemMonHoc.getMonHocID());
+            System.out.println(dmh.getDiemCK());
             if (dmh == null) {
                 return false;
             }

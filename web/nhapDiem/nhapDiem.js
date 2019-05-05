@@ -38,6 +38,7 @@ $(document).ready(function () {
 
     //Gửi yêu cầu lấy các thông tin khoá học, kỳ học
     $.ajax({
+        async: false,
         type: 'POST',
         url: 'KhoaHoc',
         data: {
@@ -45,6 +46,11 @@ $(document).ready(function () {
         success: updateKhoaHoc
     });
 
+    capNhatMonHoc();
+    $("#khoaHoc").change(capNhatMonHoc);
+    $("#kyHoc").change(capNhatMonHoc);
+    $("#monHoc").change(capNhatLopHocPhan);
+    $("#lopHoc").change(capNhatDanhSachSV);
     function updateKhoaHoc(jsonString) {
         console.log(jsonString);
         if (jsonString === "")
@@ -59,16 +65,11 @@ $(document).ready(function () {
             select.appendChild(option);
         }
     }
-    capNhatMonHoc();
-    $("#khoaHoc").change(capNhatMonHoc);
-    $("#kyHoc").change(capNhatMonHoc);
-    $("#monHoc").change(capNhatLopHocPhan);
-    $("#lopHoc").change(capNhatDanhSachSV);
     function capNhatMonHoc() {
         var KH = $("#khoaHoc").val();
         var Ky = $("#kyHoc").val();
-        console.log(Ky);
-        console.log(KH);
+        console.log("kỳ học" + Ky);
+        console.log("khoá học" + KH);
         $.ajax({
             type: 'POST',
             url: 'MonHoc',
@@ -142,13 +143,17 @@ $(document).ready(function () {
     function capNhatDanhSachSV() {
         var idLHP = $("#lopHoc").val();
         console.log("ma lop hoc phan: " + idLHP);
+        $("#doiLuuDiem").show();
         $.ajax({
             type: 'POST',
             url: 'DanhSachSV',
             data: {
                 idLopHocPhan: idLHP
             },
-            success: updateDanhSachSV
+            success: updateDanhSachSV,
+            complete: function () {
+                $("#doiLuuDiem").hide();
+            }
         });
     }
     function updateDanhSachSV(jsonString) {
@@ -166,7 +171,7 @@ $(document).ready(function () {
 
             var hoTen = document.createElement("td");
             hoTen.setAttribute("class", "hoTen");
-            hoTen.innerHTML = "<p>" + object[i].hoTen + "</p>";
+            hoTen.innerHTML = "<p class=\"ten\">" + object[i].hoTen + "</p>";
             tr.appendChild(hoTen);
             var msv = document.createElement("td");
             msv.setAttribute("class", "maSinhVien");
@@ -177,7 +182,7 @@ $(document).ready(function () {
             diemCC.setAttribute("class", "diem");
             var d = parseFloat(object[i].diemCC);
             console.log(typeof (d));
-            diemCC.innerHTML = "<input type='text' value='" + d.toFixed(2)+ "'>";
+            diemCC.innerHTML = "<input type='text' value='" + d.toFixed(2) + "'>";
             tr.appendChild(diemCC);
             var diemBT = document.createElement("td");
             diemBT.setAttribute("class", "diem");
@@ -211,13 +216,19 @@ $(document).ready(function () {
     $("#msv").keyup(timSinhVien);
     function timSinhVien() {
         var mangMaSinhVien = $(".ds");
+        var mangTenSinhVien = $(".ten");
         for (var i = 0; i < mangMaSinhVien.length; i++) {
-            if ($("#msv").val() === $(mangMaSinhVien[i]).attr("value").substring(0, $("#msv").val().length)) {
+            if ($("#msv").val().toUpperCase() === $(mangMaSinhVien[i]).attr("value").substring(0, $("#msv").val().length).toUpperCase()) {
                 $(mangMaSinhVien[i]).show();
                 $(mangMaSinhVien[i]).addClass("send");
             } else {
-                $(mangMaSinhVien[i]).hide();
-                $(mangMaSinhVien[i]).removeClass("send");
+                if ($("#msv").val().toUpperCase() === $(mangTenSinhVien[i]).text().substring(0, $("#msv").val().length).toUpperCase()) {
+                    $(mangMaSinhVien[i]).show();
+                    $(mangMaSinhVien[i]).addClass("send");
+                } else {
+                    $(mangMaSinhVien[i]).hide();
+                    $(mangMaSinhVien[i]).removeClass("send");
+                }
             }
         }
     }
@@ -237,6 +248,7 @@ $(document).ready(function () {
                                 + "\n Nhập điểm trong đoạn [0;10], dùng dấu chấm (.) để làm dấu thập phân, tối đa sau dấu chấm 2 chữ số!"
                                 + "\n                                        (-_-)");
                         $("#doiLuuDiem").hide();
+                        capNhatDanhSachSV();
                     } else {
                         var idSV = $(mangSend[i]).attr("value");
                         console.log(idSV);
@@ -277,19 +289,29 @@ $(document).ready(function () {
     });
 
     function khongDuDieuKien(mangSend) {
-        var reg = /(^[0-9]{1}$)|(^[0-9]{1}.[0-9]{1,2}$)|(^10$)|(^10.[0]{1,2}$)/;
-        var CC = $($($(mangSend).children()[2]).children()[0]).val();
-        var BT = $($($(mangSend).children()[3]).children()[0]).val();
-        var GK = $($($(mangSend).children()[4]).children()[0]).val();
-        var CK = $($($(mangSend).children()[5]).children()[0]).val();
-        if (!reg.test(CC))
-            return true;
-        if (!reg.test(BT))
-            return true;
-        if (!reg.test(GK))
-            return true;
-        if (!reg.test(CK))
-            return true;
+//        var reg = /(^[0-9]{1}$)|(^[0-9]{1}.[0-9]{1,2}$)|(^1{1}0{1}$)|(^10.[0]{1,2}$)/;
+//        var CC = $($($(mangSend).children()[2]).children()[0]).val();
+//        var BT = $($($(mangSend).children()[3]).children()[0]).val();
+//        var GK = $($($(mangSend).children()[4]).children()[0]).val();
+//        var CK = $($($(mangSend).children()[5]).children()[0]).val();
+        for (var i = 0; i < 4; i++) {
+            var CC = $($($(mangSend).children()[i + 2]).children()[0]).val();
+            var cc = Number(CC);
+            console.log(cc);
+            if (String(cc) === 'NaN') {
+                return true;
+            } else if (cc < 0 || cc > 10) {
+                return true;
+            }
+        }
+//        if (!reg.test(CC))
+//            return true;
+//        if (!reg.test(BT))
+//            return true;
+//        if (!reg.test(GK))
+//            return true;
+//        if (!reg.test(CK))
+//            return true;
         return false;
     }
 });

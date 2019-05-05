@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import qld.model.LopHocPhan;
 import qld.model.SinhVien;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-21T22:31:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-05-05T12:37:07")
 @StaticMetamodel(SinhVienLHP.class)
 public class SinhVienLHP_ { 
 

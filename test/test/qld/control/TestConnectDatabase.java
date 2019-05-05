@@ -1,3 +1,5 @@
+package test.qld.control;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,13 +24,15 @@ import support.Excel;
  * @author TruongDao
  */
 @RunWith(Parameterized.class)
-public class TestConnetDatabase {
+public class TestConnectDatabase {
+    private static final int SHEET = 1;
+    
     private String database;
     private String user;
     private String pass;
     private boolean expected;
 
-    public TestConnetDatabase(String database, String user, String pass, boolean expected) {
+    public TestConnectDatabase(String database, String user, String pass, boolean expected) {
         this.database = database;
         this.user = user;
         this.pass = pass;
@@ -59,7 +63,7 @@ public class TestConnetDatabase {
         prototype.add(new Integer(Excel.STRING));
         prototype.add(new Integer(Excel.STRING));
         prototype.add(new Integer(Excel.BOOLEAN));
-        list = new Excel(1, 4, prototype).getListObject();
+        list = new Excel(SHEET, 4, prototype).getListObject();
         return list;
     }
     

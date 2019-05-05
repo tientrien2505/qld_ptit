@@ -3,15 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/src/java/qld/model/GiaoVien.java</file>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/TestConnetDatabase.java</file>
+            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/selenium/TestDangNhap.java</file>
             <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/src/java/qld/control/DiemMonHocDao.java</file>
             <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/support/Excel.java</file>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/selenium/testDangNhap.java</file>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/src/java/qld/control/GiaoVienDao.java</file>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/qld/model/TaiKhoanIT.java</file>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/src/java/qld/model/DiemMonHoc.java</file>
-            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/test/qld/control/TestGiaoVienDao.java</file>
+            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/TestConnectDatabase.java</file>
+            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/qld/control/TaiKhoanDaoIT.java</file>
+            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/qld/control/testDiemMonHocDao.java</file>
+            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/qld/model/TestTaiKhoan.java</file>
+            <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/web/js/javascript.js</file>
             <file>file:/E:/university/damBaoChatLuongPhanMem/baiLam/QLD_PTIT/test/test/qld/control/TestDiemMonHocDao.java</file>
         </group>
     </open-files>

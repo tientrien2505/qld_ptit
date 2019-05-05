@@ -88,7 +88,7 @@
         <div id="sign" class="main-content-agile">
             <div class="popup">
                 <h2>Đăng Nhập</h2>
-                <form method="post" id="aspnetForm" action="Login">
+                <form id="aspnetForm">
                     <div class="field mr-bottom">
                         <span class="fa fa-user" aria-hidden="true"></span>
                         <input placeholder="User" name="user" type="text" id="username"
@@ -99,14 +99,14 @@
                         <input placeholder="Password" name="pass" type="password" id="password"
                                required />
                     </div>
-                    <p class="error">
+                    <p id="error">
                     </p>
                     <div class="sub">
                         <a id="ctl00_ContentPlaceHolder1_ctl00_ucDangNhap_lnkBtnQuenMK" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ucDangNhap$lnkBtnQuenMK','')">Forgot password!</a>
                     </div>
                     <img id="loading" src="./images/loading.gif" width="30px" height="30px" style="margin-top: -10px">
                     <div class="submit">
-                        <input type="submit" value="Sign In" id="dangNhap" />
+                        <div id="dangNhap" class="text">Đăng Nhập</div>
                     </div>
                 </form>
             </div>

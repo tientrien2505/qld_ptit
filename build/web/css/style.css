@@ -63,7 +63,7 @@ header:after{
     padding: 10px;
     line-height: 16px;
 }
-#search, #profile{
+#search, #profile, #dangNhap{
     font-weight: bold;
     background: #ffa200;
     color: #fff;
@@ -78,6 +78,13 @@ header:after{
     margin-top: 30px;
     cursor: pointer;
     background: #ffa200;
+}
+#dangNhap{
+    box-shadow: 1px 1px 5px black;
+    color: white;
+    cursor: pointer;
+    background: #ffa200;
+    display: inline-block;
 }
 #admin{
     box-shadow: 1px 1px 5px black;
@@ -320,12 +327,12 @@ span.fa {
 .sub {
     padding: 20px 0 30px;
 }
-.sub a, .error {
+.sub a, #error {
     font-size: .9em;
     color: #fff;
 }
-.error {
-    display: none;
+#error {
+    margin-top: 10px;
     padding: 5px 0;
 }
 .submit input[type="submit"] {

@@ -52,7 +52,7 @@ public class SinhVienDao {
         try {
             for (SinhVien sv : listSV) {
                 this.stm = this.conn.createStatement();
-                String query = "SELECT * FROM dbo.SinhVien WHERE MaSV = '" + sv.getMaSV()+"'";
+                String query = "SELECT * FROM dbo.SinhVien WHERE MaSV = '" + sv.getMaSV() + "'";
                 ResultSet rs = this.stm.executeQuery(query);
                 rs.next();
                 sv.setHoTen(rs.getNString("HoTen"));
@@ -62,6 +62,19 @@ public class SinhVienDao {
             Logger.getLogger(LopHocPhanDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    public void themSinhVien(SinhVien sv) {
+        try {
+            String query = "INSERT INTO dbo.SinhVien (MaSV,HoTen,Lop) Values(?,?,?)";
+            this.pstm = this.conn.prepareStatement(query);
+            this.pstm.setString(1, sv.getMaSV());
+            this.pstm.setString(2, sv.getHoTen());
+            this.pstm.setString(3, sv.getLop());
+            this.pstm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SinhVienDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Connection getConn() {

@@ -39,8 +39,8 @@
                     <td>
                         <label for="kyHoc">Kỳ học</label>
                         <select id="kyHoc">
-                            <option value="1">Kỳ I</option>
                             <option value="2">Kỳ II</option>
+                            <option value="1">Kỳ I</option>
                         </select>
                     </td>
                 </tr>
